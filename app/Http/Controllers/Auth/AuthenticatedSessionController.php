@@ -32,17 +32,6 @@ class AuthenticatedSessionController extends Controller
             'password' => 'required',
         ]);
 
-        // Cas spécial pour admin@admin.com sans base de données
-        if (
-            $request->email === 'admin@admin.com' &&
-            $request->password === 'admin'
-        ) {
-            // Créer une session manuellement
-            $request->session()->put('admin_logged_in', true);
-            return redirect('/admin');
-        }
-
-        // Sinon, utiliser le vrai système Laravel
         if (! Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
@@ -67,9 +56,7 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('status', 'Vous êtes déconnecté avec succès.');
