@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\DepenseController;
+use App\Http\Controllers\Admin\AdminManagementController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,12 +40,18 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 // For admin
 Route::prefix('admin')->name('admin.')->middleware('web')->group(function () {
-    Route::get('/login', [\App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
-    Route::post('/login', [\App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'store'])->name('login.submit');
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.submit');
 
     Route::middleware('auth:admin')->group(function () {
-        Route::get('/dashboard', fn () => view('admin.dashboard'))->name('dashboard');
-        Route::post('/logout', [\App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::get('/dashboard', [AdminManagementController::class, 'showPromotionForm'])->name('dashboard');
+        Route::post('/promote', [AdminManagementController::class, 'promote'])->name('promote');
+        Route::delete('/remove', [AdminManagementController::class, 'remove'])->name('remove');
+        Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        
+        // Depenses et Cotisations
+        Route::post('/depenses/create', [DepenseController::class, 'store'])->name('depenses.store');
+        Route::post('/cotisations/create', [CotisationController::class, 'store'])->name('cotisations.store');
     });
 });
 

@@ -100,42 +100,25 @@
         </style>
 
     </head>
-    <body class="font-sans antialiased bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
         <div class="min-h-screen">
             <!-- Header Dashboard Admin -->
-            <header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50 animate-slide-down">
+            <header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50 animate-slide-dow py-1">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-center h-16">
                         
                         <!-- Logo et titre -->
-                        <div class="flex items-center space-x-4 animate-fade-in-left">
-                            <div class="flex-shrink-0">
-                                <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                                    </svg>
-                                </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
                             </div>
-                            <div class="hidden md:block">
-                                <h1 class="text-xl font-bold text-gray-900">CotisationPro</h1>
-                                <p class="text-xs text-gray-500">Administration</p>
-                            </div>
-                        </div>
-
-                        <!-- Barre de recherche -->
-                        <div class="hidden md:flex flex-1 justify-center px-6 animate-fade-in" style="animation-delay: 0.2s">
-                            <div class="w-full max-w-lg">
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                                        </svg>
-                                    </div>
-                                    <input type="text" 
-                                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-200 hover:border-purple-300"
-                                        placeholder="Rechercher des membres, cotisations..."
-                                        id="search-input">
-                                </div>
+                            <div>
+                                <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                    {{ __('Dashboard Administrateur') }}
+                                </h1>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Gestion des cotisations et dépenses</p>
                             </div>
                         </div>
 
@@ -298,7 +281,7 @@
                 </div>
             </header>
 
-            <main>
+            <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
                 @yield('content')
             </main>
 
