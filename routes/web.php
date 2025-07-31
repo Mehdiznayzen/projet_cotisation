@@ -5,8 +5,8 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use App\Http\Controllers\DepenseController;
 use App\Http\Controllers\Admin\AdminManagementController;
+use App\Http\Controllers\Admin\CotisationDepenseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,10 +48,16 @@ Route::prefix('admin')->name('admin.')->middleware('web')->group(function () {
         Route::post('/promote', [AdminManagementController::class, 'promote'])->name('promote');
         Route::delete('/remove', [AdminManagementController::class, 'remove'])->name('remove');
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-        
-        // Depenses et Cotisations
-        Route::post('/depenses/create', [DepenseController::class, 'store'])->name('depenses.store');
-        Route::post('/cotisations/create', [CotisationController::class, 'store'])->name('cotisations.store');
+
+        // Cotisations et Depenses
+        Route::get('/showInfo', [CotisationDepenseController::class, 'showInfo'])->name('showInfo');
+        Route::post('/cotisations/create', [CotisationDepenseController::class, 'storeCotisation'])->name('cotisations.storeCotisation');
+        Route::post('/depenses/create', [CotisationDepenseController::class, 'storeDepense'])->name('depenses.storeDepense');
+
+        Route::prefix('depenses')->name('depenses.')->group(function () {
+            Route::get('/{id}/download', [CotisationDepenseController::class, 'downloadJustificatif'])->name('download');
+            Route::get('/{id}/view', [CotisationDepenseController::class, 'viewJustificatif'])->name('view');
+        });
     });
 });
 

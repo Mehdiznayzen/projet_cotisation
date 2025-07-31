@@ -64,20 +64,12 @@
                                 Nouvelle Dépense
                             </button>
 
-                            <div class="grid grid-cols-2 gap-3 pt-4">
-                                <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 p-3 rounded-lg hover-scale">
-                                    <svg class="w-5 h-5 text-blue-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                                    </svg>
-                                    <p class="text-xs text-blue-600 dark:text-blue-400 font-medium">Rapports</p>
-                                </div>
-                                <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 p-3 rounded-lg hover-scale">
-                                    <svg class="w-5 h-5 text-green-600 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                    <p class="text-xs text-green-600 dark:text-green-400 font-medium">Historique</p>
-                                </div>
-                            </div>
+                            <a href="{{ route('admin.showInfo') }}" class="w-full inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-purple-200 hover:border-purple-300 hover:bg-purple-50 dark:border-purple-700 dark:hover:bg-purple-900/20 transition-all duration-300 h-11 px-8 hover-scale">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                                Voir les statistiques
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -134,87 +126,6 @@
                                     </p>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Liste des cotisations --}}
-                <div class="lg:col-span-2 animate-fade-in-up" style="animation-delay: 0.3s">
-                    <div class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 rounded-lg border shadow-sm hover-scale">
-                        <div class="flex flex-col space-y-1.5 p-6">
-                            <h3 class="font-semibold tracking-tight flex items-center gap-3 text-xl">
-                                <div class="bg-gradient-to-r from-green-500 to-emerald-500 p-2 rounded-lg">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M6 10a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2"/>
-                                    </svg>
-                                </div>
-                                Cotisations créées
-                            </h3>
-                            <p class="text-sm text-muted-foreground">
-                                Historique des cotisations avec les informations de création
-                            </p>
-                        </div>
-                        <div class="p-6 pt-0">
-                            @if(isset($cotisations) && count($cotisations) > 0)
-                                <div class="space-y-4">
-                                    @foreach($cotisations as $index => $cotisation)
-                                        <div class="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-600 hover:shadow-md transition-all duration-300 animate-fade-in-up hover-scale" style="animation-delay: {{ 0.1 * $index }}s">
-                                            <div class="flex items-start justify-between">
-                                                <div class="flex-1">
-                                                    <div class="flex items-center gap-3 mb-2">
-                                                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-1.5 rounded">
-                                                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M6 10a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2"/>
-                                                            </svg>
-                                                        </div>
-                                                        <h3 class="font-semibold text-slate-800 dark:text-slate-200">
-                                                            {{ number_format($cotisation->montant, 2) }} €
-                                                        </h3>
-                                                        <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold
-                                                            @if($cotisation->type === 'mensuelle') bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200
-                                                            @elseif($cotisation->type === 'trimestrielle') bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200
-                                                            @elseif($cotisation->type === 'annuelle') bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200
-                                                            @else bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200
-                                                            @endif">
-                                                            {{ ucfirst($cotisation->type) }}
-                                                        </span>
-                                                    </div>
-                                                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                                                        {{ $cotisation->description }}
-                                                    </p>
-                                                    <div class="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
-                                                        <div class="flex items-center gap-1">
-                                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                                            </svg>
-                                                            Date: {{ \Carbon\Carbon::parse($cotisation->date)->format('d/m/Y') }}
-                                                        </div>
-                                                        <div class="flex items-center gap-1">
-                                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
-                                                            </svg>
-                                                            Créée par: {{ $cotisation->created_by }}
-                                                        </div>
-                                                        <div class="flex items-center gap-1">
-                                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                                            </svg>
-                                                            Le: {{ \Carbon\Carbon::parse($cotisation->created_at)->format('d/m/Y') }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <div class="text-center py-8 text-slate-500 dark:text-slate-400">
-                                    <svg class="w-12 h-12 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M6 10a2 2 0 00-2 2v6a2 2 0 002 2h12a2 2 0 002-2v-6a2 2 0 00-2-2"/>
-                                    </svg>
-                                    <p>Aucune cotisation créée pour le moment</p>
-                                </div>
-                            @endif
                         </div>
                     </div>
                 </div>
@@ -337,12 +248,28 @@
                     </button>
                 </div>
 
-                <form action="/cotisations/create" method="POST" class="space-y-4">
+                <form action="{{ route('admin.cotisations.storeCotisation') }}" method="POST" class="space-y-4">
                     @csrf
+                    <div>
+                        <label for="user_id" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                            Nom complet
+                        </label>
+                        <select 
+                            name="user_id" 
+                            id="user_id"
+                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
+                            required
+                        >
+                            <option value="">-- Sélectionner un adhérent --</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="cotisation_montant" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Montant (€) *
+                                Montant *
                             </label>
                             <input 
                                 type="number" 
@@ -370,32 +297,15 @@
                     </div>
                     
                     <div>
-                        <label for="cotisation_type" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Type de cotisation
-                        </label>
-                        <select 
-                            name="type" 
-                            id="cotisation_type"
-                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
-                        >
-                            <option value="mensuelle">📅 Mensuelle</option>
-                            <option value="trimestrielle">📊 Trimestrielle</option>
-                            <option value="annuelle">🗓️ Annuelle</option>
-                            <option value="exceptionnelle">⭐ Exceptionnelle</option>
-                        </select>
-                    </div>
-                    
-                    <div>
                         <label for="cotisation_description" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Description *
+                            Motif (Optionnel)
                         </label>
                         <textarea 
-                            name="description" 
-                            id="cotisation_description" 
+                            name="Motif"
+                            id="cotisation_Motif" 
                             rows="3"
-                            placeholder="Description de la cotisation..."
+                            placeholder="Motif de la cotisation..."
                             class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
-                            required
                         ></textarea>
                     </div>
                     
@@ -440,12 +350,64 @@
                     </button>
                 </div>
 
-                <form action="/depenses/create" method="POST" enctype="multipart/form-data" class="space-y-4">
+                <form action="{{ route('admin.depenses.storeDepense') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                     @csrf
+
+                    @if ($errors->any())
+                        <div class="text-red-500 text-sm">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>• {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if(session('success'))
+                        <div class="bg-green-100 text-green-800 text-sm rounded p-2 mb-4">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <div>
+                        <label for="user_id" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                            Nom complet
+                        </label>
+                        <select 
+                            name="user_id" 
+                            id="user_id"
+                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-slate-200"
+                            required
+                        >
+                            <option value="">-- Sélectionner un adhérent --</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="depense_justificatif" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                            Motif (*)
+                        </label>
+                        <select 
+                            name="motif" 
+                            id="depense_motif"
+                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
+                            required
+                        >
+                            <option value="">-- Sélectionner un motif --</option>
+                            <option value="Frais de fonctionnement">Motif 1</option>
+                            <option value="Transport">Motif 2</option>
+                            <option value="Matériel">Motif 3</option>
+                            <option value="Bureau">Motif 4</option>
+                            <option value="Autre">Motif 5</option>
+                        </select>
+
+                    </div>
+
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label for="depense_montant" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Montant (€) *
+                                Montant *
                             </label>
                             <input 
                                 type="number" 
@@ -472,94 +434,9 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="depense_categorie" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Catégorie *
-                            </label>
-                            <select 
-                                name="categorie" 
-                                id="depense_categorie"
-                                class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                                required
-                            >
-                                <option value="">Sélectionnez une catégorie</option>
-                                <option value="bureau">🏢 Fournitures de bureau</option>
-                                <option value="equipement">💻 Équipement</option>
-                                <option value="transport">🚗 Transport</option>
-                                <option value="communication">📱 Communication</option>
-                                <option value="formation">📚 Formation</option>
-                                <option value="marketing">📢 Marketing</option>
-                                <option value="maintenance">🔧 Maintenance</option>
-                                <option value="autre">📦 Autre</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="depense_fournisseur" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Fournisseur
-                            </label>
-                            <input 
-                                type="text" 
-                                name="fournisseur" 
-                                id="depense_fournisseur"
-                                placeholder="Nom du fournisseur"
-                                class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                            >
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="depense_description" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Description *
-                        </label>
-                        <textarea 
-                            name="description" 
-                            id="depense_description" 
-                            rows="3"
-                            placeholder="Description de la dépense..."
-                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                            required
-                        ></textarea>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="depense_methode_paiement" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Méthode de paiement
-                            </label>
-                            <select 
-                                name="methode_paiement" 
-                                id="depense_methode_paiement"
-                                class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                            >
-                                <option value="especes">💵 Espèces</option>
-                                <option value="carte">💳 Carte bancaire</option>
-                                <option value="virement">🏦 Virement</option>
-                                <option value="cheque">📄 Chèque</option>
-                                <option value="autre">🔄 Autre</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="depense_statut" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                                Statut
-                            </label>
-                            <select 
-                                name="statut" 
-                                id="depense_statut"
-                                class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                            >
-                                <option value="paye">✅ Payé</option>
-                                <option value="en_attente">⏳ En attente</option>
-                                <option value="annule">❌ Annulé</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div>
                         <label for="depense_justificatif" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Justificatif (optionnel)
+                            Justificatif (*)
                         </label>
                         <input 
                             type="file" 
@@ -571,6 +448,20 @@
                         <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
                             PDF, JPG, PNG, DOC (Max: 10MB)
                         </p>
+                    </div>
+
+                    <div>
+                        <label for="depense_description" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                            Commentaire (Optionnel)
+                        </label>
+                        <textarea 
+                            name="description" 
+                            id="depense_description" 
+                            rows="3"
+                            placeholder="Description de la dépense..."
+                            class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
+                            required
+                        ></textarea>
                     </div>
                     
                     <div class="flex justify-end space-x-3 pt-4">

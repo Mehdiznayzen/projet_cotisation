@@ -103,7 +103,9 @@
     <body class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
         <div class="min-h-screen">
             <!-- Header Dashboard Admin -->
-            <header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50 animate-slide-dow py-1">
+             @if (empty($hideHeader))
+             
+             <header class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50 animate-slide-dow py-1">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-center h-16">
                         
@@ -124,40 +126,17 @@
 
                         <!-- Actions et profil -->
                         <div class="flex items-center space-x-4 animate-fade-in-right">
-                            
-                            <!-- Boutons d'action rapide -->
-                            <div class="hidden lg:flex space-x-2">
-                                <button class="relative p-2 text-gray-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200 group">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                    </svg>
-                                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                                        Nouvelle cotisation
-                                    </span>
-                                </button>
-                                
-                                <button class="relative p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all duration-200 group">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-                                    </svg>
-                                    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                                        Nouvelle dépense
-                                    </span>
-                                </button>
-                            </div>
-
                             <!-- Notifications -->
                             <div class="relative">
-                                <button class="p-2 text-gray-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200 relative"
+                                <!-- <button class="p-2 text-gray-400 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-200 relative"
                                         onclick="toggleNotifications()">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                                     </svg>
-                                    <!-- Badge de notification -->
                                     <span class="absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
                                         3
                                     </span>
-                                </button>
+                                </button> -->
                                 
                                 <!-- Dropdown notifications -->
                                 <div id="notifications-dropdown" class="hidden absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50 animate-scale-in">
@@ -223,7 +202,6 @@
                                 <!-- Dropdown utilisateur -->
                                 <div id="user-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 z-50 animate-scale-in">
                                     <div class="py-1">
-                                        <div class="border-t border-gray-100"></div>
                                         <form method="POST" action="{{ route('admin.logout') }}">
                                             @csrf
                                             <button type="submit" class="flex items-center w-full px-4 py-2 text-sm text-red-700 hover:bg-red-50 transition-colors">
@@ -280,6 +258,7 @@
                     </div>
                 </div>
             </header>
+            @endif
 
             <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
                 @yield('content')
