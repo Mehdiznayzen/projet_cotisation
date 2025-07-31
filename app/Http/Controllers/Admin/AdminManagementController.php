@@ -19,7 +19,9 @@ class AdminManagementController extends Controller
 
         $adminUsers = User::whereIn('email', $adminEmails)->get();
 
-        return view('admin.dashboard', compact('users', 'adminUsers', 'adminEmails'));
+        $usersCotisationDepense = User::all();
+
+        return view('admin.dashboard', compact('users', 'adminUsers', 'adminEmails', 'usersCotisationDepense'));
     }
 
 

@@ -261,7 +261,7 @@
                             required
                         >
                             <option value="">-- Sélectionner un adhérent --</option>
-                            @foreach($users as $user)
+                            @foreach($usersCotisationDepense as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
@@ -379,7 +379,7 @@
                             required
                         >
                             <option value="">-- Sélectionner un adhérent --</option>
-                            @foreach($users as $user)
+                            @foreach($usersCotisationDepense as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
