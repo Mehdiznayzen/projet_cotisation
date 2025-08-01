@@ -99,15 +99,26 @@
                                         <label class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 block">
                                             Sélectionner un utilisateur
                                         </label>
-                                        <select name="email" class="flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full hover:cursor-pointer" required>
+                                        <select 
+                                            name="email" 
+                                            class="flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full hover:cursor-pointer" 
+                                            required
+                                        >
                                             <option value="">-- Sélectionnez un utilisateur --</option>
-                                            @foreach($users as $user)
-                                                @if($user->email !== 'admin@admin.com')
+
+                                            @php
+                                                $filteredUsers = $users->filter(fn($user) => $user->email !== 'admin@admin.com');
+                                            @endphp
+
+                                            @if($filteredUsers->isEmpty())
+                                                <option value="" disabled>Aucun utilisateur disponible</option>
+                                            @else
+                                                @foreach($filteredUsers as $user)
                                                     <option value="{{ $user->email }}">
                                                         @if(in_array($user->email, $adminEmails)) ✅ @endif{{ $user->email }}
                                                     </option>
-                                                @endif
-                                            @endforeach
+                                                @endforeach
+                                            @endif
                                         </select>
                                         <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
                                             L'utilisateur doit déjà avoir un compte sur la plateforme
@@ -261,9 +272,13 @@
                             required
                         >
                             <option value="">-- Sélectionner un adhérent --</option>
-                            @foreach($usersCotisationDepense as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
+                            @if($usersCotisationDepense->isEmpty())
+                                <option value="" disabled>Aucun adhérent disponible</option>
+                            @else
+                                @foreach($usersCotisationDepense as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -379,9 +394,15 @@
                             required
                         >
                             <option value="">-- Sélectionner un adhérent --</option>
-                            @foreach($usersCotisationDepense as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
+
+                            @if($usersCotisationDepense->isEmpty())
+                                <option value="" disabled>Aucun adhérent disponible</option>
+                            @else
+                                @foreach($usersCotisationDepense as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            @endif
+
                         </select>
                     </div>
                     <div>
