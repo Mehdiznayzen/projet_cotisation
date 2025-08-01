@@ -77,18 +77,6 @@
             </div>
 
             <div class="flex items-center justify-between animate-slide-in-up" style="animation-delay: 0.3s">
-                <div class="flex items-center">
-                    <input 
-                        id="remember_me" 
-                        type="checkbox" 
-                        name="remember"
-                        class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded transition-all"
-                    >
-                    <label for="remember_me" class="ml-2 block text-sm text-gray-700">
-                        Se souvenir de moi
-                    </label>
-                </div>
-
                 <a class="text-sm text-purple-600 hover:text-purple-500 font-medium transition-colors" href="">
                     Mot de passe oublié ?
                 </a>

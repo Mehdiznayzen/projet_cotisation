@@ -96,15 +96,15 @@
                     <div class="md:col-span-2 text-center">
                         <h2 class="text-sm font-medium text-indigo-100 mb-2">SOLDE ACTUEL</h2>
                         <div class="solde-principal text-4xl md:text-5xl font-bold mb-2 {{ $solde >= 0 ? 'text-green-300' : 'text-red-300' }}">
-                            {{ number_format($solde, 2, ',', ' ') }} €
+                            {{ number_format($solde, 2, ',', ' ') }} MAD
                         </div>
-                        <div class="flex items-center justify-center gap-2 text-sm text-indigo-100">
+                        <div class="flex items-center justify-center gap-2 text-sm text-indigo-100 solde-message">
                             @if($solde >= 0)
                                 <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                                 </svg>
                                 Solde positif
-                            @else
+                            @elseif($solde < 0)
                                 <svg class="w-4 h-4 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
                                 </svg>
@@ -122,7 +122,7 @@
                             <span class="text-xs font-medium text-green-200">COTISATIONS</span>
                         </div>
                         <div class="total-cotisations text-2xl font-bold text-green-300">
-                            {{ number_format($totalCotisations, 2, ',', ' ') }} €
+                            {{ number_format($totalCotisations, 2, ',', ' ') }} MAD
                         </div>
                         <div class="count-cotisations text-xs text-green-100 mt-1">
                             {{ $cotisations->count() }} entrées
@@ -138,7 +138,7 @@
                             <span class="text-xs font-medium text-red-200">DÉPENSES</span>
                         </div>
                         <div class="total-depenses text-2xl font-bold text-red-300">
-                            {{ number_format($totalDepenses, 2, ',', ' ') }} €
+                            {{ number_format($totalDepenses, 2, ',', ' ') }} MAD
                         </div>
                         <div class="count-depenses text-xs text-red-100 mt-1">
                             {{ $depenses->count() }} entrées
@@ -168,7 +168,7 @@
                             </div>
                             <div class="text-right">
                                 <div class="text-2xl font-bold text-white">
-                                    {{ number_format($totalCotisations, 0, ',', ' ') }} €
+                                    {{ number_format($totalCotisations, 0, ',', ' ') }} MAD
                                 </div>
                                 <div class="text-xs text-green-100">Total</div>
                             </div>
@@ -192,7 +192,7 @@
                                                         </svg>
                                                     </div>
                                                     <h4 class="font-semibold text-green-800 dark:text-green-200 text-lg">
-                                                        +{{ number_format($cotisation->montant, 2, ',', ' ') }} €
+                                                        +{{ number_format($cotisation->montant, 2, ',', ' ') }} MAD
                                                     </h4>
                                                     <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                                                         Cotisation
@@ -260,7 +260,7 @@
                             </div>
                             <div class="text-right">
                                 <div class="text-2xl font-bold text-white">
-                                    {{ number_format($totalDepenses, 0, ',', ' ') }} €
+                                    {{ number_format($totalDepenses, 0, ',', ' ') }} MAD
                                 </div>
                                 <div class="text-xs text-red-100">Total</div>
                             </div>
@@ -284,7 +284,7 @@
                                                         </svg>
                                                     </div>
                                                     <h4 class="font-semibold text-red-800 dark:text-red-200 text-lg">
-                                                        -{{ number_format($depense->montant, 2, ',', ' ') }} €
+                                                        -{{ number_format($depense->montant, 2, ',', ' ') }} MAD
                                                     </h4>
                                                     <span class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200">
                                                         Dépense
@@ -293,9 +293,9 @@
                                                 <p class="text-sm text-red-700 dark:text-red-300 mb-2 font-medium">
                                                     <strong>Motif:</strong> {{ $depense->motif }}
                                                 </p>
-                                                @if($depense->description)
+                                                @if($depense->commentaire)
                                                     <p class="text-sm text-red-600 dark:text-red-400 mb-3">
-                                                        {{ $depense->description }}
+                                                        {{ $depense->commentaire }}
                                                     </p>
                                                 @endif
                                                 @if($depense->justificatif)
@@ -366,7 +366,7 @@
                         <div class="text-center">
                             <div class="text-sm text-green-600 dark:text-green-400 mb-1">Cotisation moyenne</div>
                             <div class="avg-cotisations text-2xl font-bold text-green-700 dark:text-green-300">
-                                {{ $cotisations->count() > 0 ? number_format($cotisations->avg('montant'), 2, ',', ' ') : '0,00' }} €
+                                {{ $cotisations->count() > 0 ? number_format($cotisations->avg('montant'), 2, ',', ' ') : '0,00' }} MAD
                             </div>
                         </div>
                     </div>
@@ -375,7 +375,7 @@
                         <div class="text-center">
                             <div class="text-sm text-red-600 dark:text-red-400 mb-1">Dépense moyenne</div>
                             <div class="avg-depenses text-2xl font-bold text-red-700 dark:text-red-300">
-                                {{ $depenses->count() > 0 ? number_format($depenses->avg('montant'), 2, ',', ' ') : '0,00' }} €
+                                {{ $depenses->count() > 0 ? number_format($depenses->avg('montant'), 2, ',', ' ') : '0,00' }} MAD
                             </div>
                         </div>
                     </div>
@@ -552,93 +552,96 @@ function filterItems(selector, dateDebut, dateFin) {
 }
 
 // Fonction pour recalculer les totaux après filtrage
+function formatMAD(value) {
+    return value.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MAD';
+}
+
 function updateTotals() {
     let totalCotisations = 0;
     let totalDepenses = 0;
     let countCotisations = 0;
     let countDepenses = 0;
-    
-    // Calculer les cotisations visibles
+
     document.querySelectorAll('.cotisation-item').forEach(item => {
         if (item.style.display !== 'none') {
             totalCotisations += parseFloat(item.dataset.montant) || 0;
             countCotisations++;
         }
     });
-    
-    // Calculer les dépenses visibles
+
     document.querySelectorAll('.depense-item').forEach(item => {
         if (item.style.display !== 'none') {
             totalDepenses += parseFloat(item.dataset.montant) || 0;
             countDepenses++;
         }
     });
-    
-    // Mettre à jour les totaux dans l'interface
+
     const solde = totalCotisations - totalDepenses;
-    
+
     // Mettre à jour le solde principal
     const soldeElement = document.querySelector('.solde-principal');
     if (soldeElement) {
-        soldeElement.textContent = new Intl.NumberFormat('fr-FR', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(solde);
+        soldeElement.textContent = formatMAD(solde);
         soldeElement.className = `solde-principal text-4xl md:text-5xl font-bold mb-2 ${solde >= 0 ? 'text-green-300' : 'text-red-300'}`;
     }
-    
+
+    // Mettre à jour le message solde positif/négatif
+    const soldeMessage = document.querySelector('.solde-message');
+    if (soldeMessage) {
+        if (solde >= 0) {
+            soldeMessage.innerHTML = `
+                <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                Solde positif
+            `;
+        } else {
+            soldeMessage.innerHTML = `
+                <svg class="w-4 h-4 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+                </svg>
+                Solde négatif
+            `;
+        }
+    }
+
     // Mettre à jour les totaux dans les cards
     const totalCotisationsElement = document.querySelector('.total-cotisations');
     if (totalCotisationsElement) {
-        totalCotisationsElement.textContent = new Intl.NumberFormat('fr-FR', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(totalCotisations);
+        totalCotisationsElement.textContent = formatMAD(totalCotisations);
     }
-    
+
     const totalDepensesElement = document.querySelector('.total-depenses');
     if (totalDepensesElement) {
-        totalDepensesElement.textContent = new Intl.NumberFormat('fr-FR', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(totalDepenses);
+        totalDepensesElement.textContent = formatMAD(totalDepenses);
     }
-    
+
     // Mettre à jour les compteurs
     const countCotisationsElement = document.querySelector('.count-cotisations');
     if (countCotisationsElement) {
         countCotisationsElement.textContent = `${countCotisations} entrées`;
     }
-    
+
     const countDepensesElement = document.querySelector('.count-depenses');
     if (countDepensesElement) {
         countDepensesElement.textContent = `${countDepenses} entrées`;
     }
-    
-    // Mettre à jour les moyennes
-    const avgCotisationsElement = document.querySelector('.avg-cotisations');
-    if (avgCotisationsElement && countCotisations > 0) {
-        avgCotisationsElement.textContent = new Intl.NumberFormat('fr-FR', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(totalCotisations / countCotisations);
-    }
-    
-    const avgDepensesElement = document.querySelector('.avg-depenses');
-    if (avgDepensesElement && countDepenses > 0) {
-        avgDepensesElement.textContent = new Intl.NumberFormat('fr-FR', {
-            style: 'currency',
-            currency: 'EUR'
-        }).format(totalDepenses / countDepenses);
-    }
-    
-    // Mettre à jour le ratio
-    const ratioElement = document.querySelector('.ratio-element');
-    if (ratioElement) {
-        if (totalDepenses > 0) {
-            ratioElement.textContent = (totalCotisations / totalDepenses).toFixed(2);
+
+    if (soldeMessage) {
+        if (solde >= 0) {
+            soldeMessage.innerHTML = `
+                <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+                Solde positif
+            `;
         } else {
-            ratioElement.textContent = '∞';
+            soldeMessage.innerHTML = `
+                <svg class="w-4 h-4 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
+                </svg>
+                Solde négatif
+            `;
         }
     }
 }

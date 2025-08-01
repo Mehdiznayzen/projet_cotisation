@@ -14,7 +14,7 @@ class Depense extends Model
         'date',
         'motif',
         'justificatif',
-        'description',
+        'commentaire',
     ];
 
     public function user()

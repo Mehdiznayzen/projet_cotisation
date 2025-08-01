@@ -44,7 +44,7 @@
         <div class="mt-8 text-center relative z-10">
             <div class="space-y-4 animate-fadeInUp delay-300">
                 <p class="text-xs text-gray-500">
-                    © 2024 CotisationPro. Tous droits réservés.
+                    © 2025 CotisationPro. Tous droits réservés.
                 </p>
             </div>
         </div>

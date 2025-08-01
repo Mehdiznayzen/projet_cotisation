@@ -149,7 +149,7 @@
                                                 <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
                                                 <div class="flex-1">
                                                     <p class="text-sm text-gray-900">Nouvelle cotisation reçue</p>
-                                                    <p class="text-xs text-gray-500">Marie Dubois - €50.00</p>
+                                                    <p class="text-xs text-gray-500">Marie Dubois - MAD50.00</p>
                                                     <p class="text-xs text-gray-400">Il y a 5 minutes</p>
                                                 </div>
                                             </div>
@@ -169,7 +169,7 @@
                                                 <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
                                                 <div class="flex-1">
                                                     <p class="text-sm text-gray-900">Dépense en attente</p>
-                                                    <p class="text-xs text-gray-500">Matériel bureau - €180.50</p>
+                                                    <p class="text-xs text-gray-500">Matériel bureau - MAD180.50</p>
                                                     <p class="text-xs text-gray-400">Il y a 2 heures</p>
                                                 </div>
                                             </div>

@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->date('date');
             $table->string('motif');
             $table->string('justificatif')->nullable();
-            $table->text('description')->nullable();
+            $table->text('commentaire')->nullable();
             $table->timestamps();
         });
     }

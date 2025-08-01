@@ -104,6 +104,8 @@
                                             class="flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full hover:cursor-pointer" 
                                             required
                                         >
+                                        
+
                                             <option value="">-- Sélectionnez un utilisateur --</option>
 
                                             @php
@@ -416,13 +418,12 @@
                             required
                         >
                             <option value="">-- Sélectionner un motif --</option>
-                            <option value="Frais de fonctionnement">Motif 1</option>
-                            <option value="Transport">Motif 2</option>
-                            <option value="Matériel">Motif 3</option>
-                            <option value="Bureau">Motif 4</option>
-                            <option value="Autre">Motif 5</option>
+                            <option value="Motif 1">Motif 1</option>
+                            <option value="Motif 2">Motif 2</option>
+                            <option value="Motif 3">Motif 3</option>
+                            <option value="Motif 4">Motif 4</option>
+                            <option value="Motif 5">Motif 5</option>
                         </select>
-
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
@@ -476,12 +477,11 @@
                             Commentaire (Optionnel)
                         </label>
                         <textarea 
-                            name="description" 
-                            id="depense_description" 
+                            name="commentaire" 
+                            id="depense_commentaire" 
                             rows="3"
-                            placeholder="Description de la dépense..."
+                            placeholder="Commentiare sur la dépense..."
                             class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-slate-700 dark:text-slate-200"
-                            required
                         ></textarea>
                     </div>
                     

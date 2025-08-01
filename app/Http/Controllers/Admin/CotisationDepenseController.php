@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Depense;
 use App\Models\Cotisation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage; // ← Import manquant ajouté
+use Illuminate\Support\Facades\Storage;
 
 class CotisationDepenseController extends Controller
 {
@@ -20,12 +20,6 @@ class CotisationDepenseController extends Controller
             'depenses' => $depenses,
             'hideHeader' => true
         ]);
-    }
-
-    public function index()
-    {
-        $cotisations = Cotisation::with('user')->latest()->get();
-        return view('cotisation.index', compact('cotisations'));
     }
 
     public function storeCotisation(Request $request)
@@ -48,9 +42,9 @@ class CotisationDepenseController extends Controller
             'user_id' => 'required|exists:users,id',
             'montant' => 'required|numeric|min:0',
             'date' => 'required|date',
-            'motif' => 'required|string|in:Frais de fonctionnement,Transport,Matériel,Bureau,Autre',
-            'description' => 'nullable|string',
-            'justificatif' => 'nullable|file|max:10240|mimes:pdf,jpg,jpeg,png,doc,docx',
+            'motif' => 'required|string|in:Motif 1,Motif 2,Motif 3,Motif 4,Motif 5',
+            'justificatif' => 'nullable|file|mimes:pdf,jpg,jpeg,png,doc,docx',
+            'commentaire' => 'nullable|string',
         ]);
 
         if ($request->hasFile('justificatif')) {
